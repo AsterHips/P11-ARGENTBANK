@@ -5,7 +5,6 @@ const initialState = {
     lastName: '',
     email: '',
     token: null,
-    coco: '',
 }
 
 export const userReducer = (state = initialState, action) => {

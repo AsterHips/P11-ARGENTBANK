@@ -1,11 +1,11 @@
 const initialState = {
-    theme: false
+    edit: false
 };
 
-export const darkmodeReducer = (state = initialState, action) => {
+export const editmodeReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'TOGGLE_MODE':
-            return {theme: !state.theme}
+            return {edit: !state.edit}
         default:
             return {...state }
     }

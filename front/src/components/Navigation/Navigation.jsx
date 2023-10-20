@@ -1,10 +1,17 @@
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { logout } from "../../redux/actions/user.action";
+
 import Logo from "../../assets/argentBankLogo.png";
 
 export default function Navigation() {
     const user = useSelector((store) => store.user);
-    console.log(user);
+    const dispatch = useDispatch();
+
+    // console.log(user);
+    console.log(user.id);
+
     return (
         <header className="main-nav">
             <NavLink to="/" className="main-nav-logo">
@@ -13,17 +20,45 @@ export default function Navigation() {
                     src={Logo}
                     alt="Argent Bank Logo"
                 />
-                <h1 class="sr-only">Argent Bank</h1>
+                <h1 className="sr-only">Argent Bank</h1>
             </NavLink>
             <nav>
-                <NavLink to="/signin" className="main-nav-item">
-                    <i class="fa fa-user-circle"></i>Sign In
-                </NavLink>
-                {/* {user.token && <li>
-                        <NavLink to="/signout">Sign Out</NavLink>
-                    </li> } */}
+                {/* {user.id === "" && (
+                    <NavLink to="/signin" className="main-nav-item">
+                        <i className="fa fa-user-circle"></i>Sign in
+                    </NavLink>
+                )}
+                {user.id && (
+                    <>
+                    <NavLink to="/user" className="main-nav-item">
+                        <i className="fa fa-user-circle"></i>
+                        {user.firstName}
+                    </NavLink>
+                    <NavLink to="/" className="main-nav-item" onClick={dispatch(logout())}>
+                        <i className="fa fa-sign-out"></i>Sign Out
+                    </NavLink>
+                    </>
+                )} */}
+                {user.id === "" ? (
+                    <NavLink to="/signin" className="main-nav-item">
+                        <i className="fa fa-user-circle"></i>Sign in
+                    </NavLink>
+                ) : (
+                    <>
+                        <NavLink to="/user" className="main-nav-item">
+                            <i className="fa fa-user-circle"></i>
+                            {user.firstName}
+                        </NavLink>
+                        <NavLink
+                            to="/"
+                            className="main-nav-item"
+                            onClick={dispatch(logout())}
+                        >
+                            <i className="fa fa-sign-out"></i>Sign Out
+                        </NavLink>
+                    </>
+                )}
             </nav>
-            {/* {user.test !== "" && <p>{user.test}</p>} */}
         </header>
     );
 }

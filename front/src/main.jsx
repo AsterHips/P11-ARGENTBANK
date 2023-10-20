@@ -1,25 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import { Provider } from 'react-redux'
+
 import store from './redux/store.js'
+import { Provider } from 'react-redux'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
-import './app.css'
+import './assets/css/style.css'
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <App />,
-//     // children: [
-//     //   {
-//     //     path: "team",
-//     //     element: <Team />,
-//     //     loader: teamLoader,
-//     //   },
-//     // ],
-//   },
-// ]);
+import App from './App.jsx'
+import Home from './pages/Home.jsx'
+import Signin from './pages/Signin.jsx'
+import User from './pages/user.jsx'
 
 const router = createBrowserRouter([
   {
@@ -29,16 +20,20 @@ const router = createBrowserRouter([
       children: [
           {
               path: "/",
-              element: <App />,
+              element: <Home />,
           },
           {
-              // path: "/signin",
-              // element: <Signin />,
+              path: "/signin",
+              element: <Signin />,
           },
-          // {
-          //     path: "/A_propos",
-          //     element: <A_propos />,
-          // },
+          {
+              path: "/user",
+              element: <User />,
+          },
+      //   {
+      //     path: "/User",
+      //     element: <User />,
+      // },
       ],
   },
 ]);

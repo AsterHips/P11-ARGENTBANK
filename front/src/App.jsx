@@ -1,45 +1,27 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-
-import "./app.css";
 
 import Navigation from "./components/Navigation/Navigation";
-import Banner from "./components/Banner/Banner";
-import Features from "./components/Features/Features";
+import Footer from "./components/Footer/Footer";
 
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "./redux/actions/user.action";
-import { toggleMode } from "./redux/actions/darkmode.action";
-import Footer from "./components/Footer/Footer";
+import { toggleMode } from "./redux/actions/editmode.action";
+import { Outlet, useLocation } from "react-router";
+
 
 function App() {
-    const darkmode = useSelector((store) => store.darkmode.theme);
-    console.log(darkmode);
+    // const currentPage = useLocation().pathname;
+    const editmode = useSelector((store) => store.editmode.edit);
+    console.log(editmode);
+    // console.log(currentPage)
 
     const dispatch = useDispatch();
 
     return (
-        <main className={`${darkmode ? "dark" : ""}`}>
+        // <main className={`${darkmode ? "dark" : ""}`}>
+        <main className="main-content">
             <Navigation />
-            <Banner />
-            <Features />
-            {/* <button
-                type="button"
-                onClick={() =>
-                    dispatch(
-                        login({
-                            token: "fvsdvsdfvdsf.dfvsdfv",
-                            coco: "saucisse",
-                        })
-                    )
-                }
-            >
-                TAPE MOI
-            </button>
-            <button type="button" onClick={() => dispatch(toggleMode())}>
-                TAPE MOI PLUS FORT
-            </button> */}
+            <Outlet />
             <Footer />
         </main>
     );
