@@ -1,9 +1,15 @@
+import { useSelector } from "react-redux";
+
 function Transaction({ dataItem }) {
 
-    // console.log(setEdit)
+    const user = useSelector((store) => store.user);
+    const edit = user.editMode;
+
+    // console.log(edit)
+
     return (
         // <section className={`account ${setEdit ? "transaction-bg" : ""}`}>
-        <section className="account">
+        <section className={`${edit ? "account-edit" : "account"}`}>
             <div className="account-content-wrapper">
                 <h3 className="account-title">{dataItem.title}</h3>
                 <p className="account-amount">{dataItem.amount}</p>
@@ -11,11 +17,12 @@ function Transaction({ dataItem }) {
                     {dataItem.description}
                 </p>
             </div>
-            <div className="account-content-wrapper cta">
+            {!edit && <div className="account-content-wrapper cta">
                 <button className="transaction-button">
                     View transactions
                 </button>
-            </div>
+            </div>}
+            
         </section>
     );
 }

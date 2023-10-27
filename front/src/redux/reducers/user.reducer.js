@@ -5,6 +5,7 @@ const initialState = {
     lastName: '',
     email: '',
     token: null,
+    editMode: false,
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -14,6 +15,10 @@ export const userReducer = (state = initialState, action) => {
          
         case 'LOGOUT':
             return { ...initialState }
+
+        case 'TOGGLEEDIT':
+            return {...state, editMode: !state.editMode}
+
         default:
             return {...state }
     }

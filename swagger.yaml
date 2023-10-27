@@ -101,12 +101,108 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+  /user/transactions/{id}:
+    get:
+      tags:
+          - User Transactions
+      summary: Returns all transactions for this account
+      security:
+        - Bearer: []
+      parameters:
+        -name: id
+          in: path
+          required: true
+          description: id of user
+      responses:
+        '200':
+          description: Returns an array of all transactions
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/TransactionsUser'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '500':
+          description: Internal Server Error
+  /user/transaction/{id}:
+    get:
+      tags:
+        - User Module
+      summary: Returns details about a specific transaction
+      description: Returns details about a specific transaction
+      security:
+        - Bearer: []
+      parameters:
+        -name: id
+         in: path
+         required: true
+         description: id of transaction
+         schema:
+           type: integer
+           format: int64
+           example: 1
+      responses:
+        '200':
+            description: Transaction found successfully 
+            schema:
+              $ref: '#/definitions/LoginResponse'
+        '400':
+          description: Invalid Fields
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '500':
+          description: Internal Server Error    
+  /user/transaction/details:
+    patch:
+      tags:
+        - User Transactions
+      summary: Update transaction details
+      description: Update details about transaction
+      security:
+        - Bearer: []
+      parameters:
+        -name: id
+          in: path
+          required: true
+          description: id of user
+        - name: body
+          in: body
+          description: New UserName
+          required: true
+          schema:
+            $ref: '#/definitions/transactionDetails'
+      produces:
+        - application/json
+    responses:
+    '200':
+      description: UserName updated successfully
+      schema:
+        $ref: '#/definitions/TransactionDetails'
+    '400':
+      description: Invalid Fields
+    '401':
+      description: Unauthorized
+    '403':
+      description: Forbidden
+    '500':
+      description: Internal Server Error 
 securityDefinitions:
   Bearer:
     type: apiKey
     name: Authorization
     in: header
 definitions:
+  UserName:
+    properties:
+      NewUserName:
+        type: string
+        description: New UserName
   User:
     properties:
       email:
@@ -156,3 +252,35 @@ definitions:
     properties:
       userName:
         type: string
+  TransactionsUser:
+    type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+            format: int64
+            example: 0
+          title:
+            type: string
+            example: "Argent Bank Checking (x8349)"
+          amount: 
+            type: string
+            example: "$2,082.79"
+          description:
+            type: string
+            example: "Available Balance"
+  TransactionDetails:
+    type: array
+      items:
+        type: object
+        properties:
+          transactionType:
+            type: string
+            example: "Electronic"
+          category:
+            type: string
+            example: "Food"
+          note:
+            type: string
+            example: "lorem ipsum"

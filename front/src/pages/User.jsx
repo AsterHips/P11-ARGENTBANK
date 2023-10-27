@@ -1,18 +1,17 @@
-import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import Welcome from "../components/User/Welcome";
-import Transactions from "../components/User/Transactions";
-import Edit from "../components/User/Edit";
+import Welcome from "../components/Welcome";
+import Transactions from "../components/Transactions";
+import Edit from "../components/Edit";
 
 function User() {
-    const [edit, setEdit] = useState(false);
     const user = useSelector((store) => store.user);
+    const edit = user.editMode;
 
     return (
         <main className={`main ${edit ? "" : "bg-dark"}`}>
-            {edit ? <Edit setEdit={setEdit} /> : <Welcome setEdit={setEdit} />}
-            <Transactions editPage={edit} />
+            {edit ? <Edit /> : <Welcome />}
+            <Transactions />
         </main>
     );
 }

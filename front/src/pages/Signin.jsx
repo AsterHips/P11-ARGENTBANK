@@ -9,7 +9,7 @@ function Signin() {
         password: "password123",
     });
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleInput = (e) => {
@@ -31,6 +31,7 @@ function Signin() {
         );
 
         const tokenData = await tokenResponse.json();
+
         const bearer = "Bearer " + tokenData.body.token;
 
         const userResponse = await fetch(
@@ -47,8 +48,8 @@ function Signin() {
         const userData = await userResponse.json();
 
         if (userResponse.ok) {
-            dispatch(login(userData.body));
-            navigate('/user')
+            dispatch(login({...userData.body, token: tokenData.body.token}));
+            navigate("/user");
         }
     };
 
