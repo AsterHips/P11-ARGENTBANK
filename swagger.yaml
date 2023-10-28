@@ -104,7 +104,7 @@ paths:
   /user/transactions/{id}:
     get:
       tags:
-          - User Transactions
+        - User Transactions
       summary: Returns all transactions for this account
       security:
         - Bearer: []
@@ -131,7 +131,7 @@ paths:
   /user/transaction/{id}:
     get:
       tags:
-        - User Module
+        - User Transactions
       summary: Returns details about a specific transaction
       description: Returns details about a specific transaction
       security:
@@ -167,7 +167,7 @@ paths:
       security:
         - Bearer: []
       parameters:
-        -name: id
+        - name: id
           in: path
           required: true
           description: id of user
