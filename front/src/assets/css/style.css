@@ -81,7 +81,7 @@ nav {
 }
 
 .hero {
-    background-image: url("../bank-tree.jpeg");
+    background-image: url("../bank-tree.jpg");
     background-position: 0 -50px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -337,7 +337,7 @@ nav {
 .edit-user-info {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
     box-sizing: border-box;
     width: 30vw;
     margin: 0 auto 2rem auto;
@@ -352,15 +352,19 @@ nav {
     gap: 1rem;
 }
 
-.edit-user-info input {
+.edit-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.edit-wrapper input {
+    width: 50%;
     height: 1.5rem;
     border-radius: 5%;
 }
 
-.edit-wrapper {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+.edit-wrapper label {
+    width: 50%;
 }
 
 .buttons-wrapper {

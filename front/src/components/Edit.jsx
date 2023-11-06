@@ -10,7 +10,6 @@ function Edit() {
     const dispatch = useDispatch();
 
     const handleUpdate = async () => {
-        console.log(userName)
         const response = await fetch(
             "http://localhost:3001/api/v1/user/profile",
             {
@@ -23,7 +22,6 @@ function Edit() {
             }
         );
         const data = await response.json();
-        console.log(data);
 
         if (response.ok) {
             dispatch(login({...data.body, editMode: false}));
