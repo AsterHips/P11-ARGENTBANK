@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 
-import Welcome from "../components/Welcome";
-import Transactions from "../components/Transactions";
-import Edit from "../components/Edit";
+import Welcome from "../../components/Welcome/Welcome";
+import Transactions from "../../components/Transactions/Transactions";
+import Edit from "../../components/Edit/Edit";
 
 function User() {
     const user = useSelector((store) => store.user);

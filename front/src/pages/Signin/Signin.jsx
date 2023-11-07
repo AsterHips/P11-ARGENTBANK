@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { login } from "../redux/actions/user.action";
+import { login } from "../../redux/actions/user.action";
 import { useNavigate } from "react-router";
 
 function Signin() {

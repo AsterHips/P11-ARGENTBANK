@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { toggleEdit } from "../redux/actions/user.action";
+import { toggleEdit } from "../../redux/actions/user.action";
 
 function Welcome() {
     const user = useSelector((store) => store.user);

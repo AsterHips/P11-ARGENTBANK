@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { logout } from "../redux/actions/user.action";
+import { logout } from "../../redux/actions/user.action";
 
 import Logo from "../assets/argentBankLogo.png";
 
