@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { login } from "../../redux/actions/user.action";
 import { useNavigate } from "react-router";
+
+import { login } from "../../redux/actions/user.action";
 
 function Signin() {
     const [formData, setFormData] = useState({
@@ -48,7 +49,7 @@ function Signin() {
         const userData = await userResponse.json();
 
         if (userResponse.ok) {
-            dispatch(login({...userData.body, token: tokenData.body.token}));
+            dispatch(login({ ...userData.body, token: tokenData.body.token }));
             navigate("/user");
         }
     };

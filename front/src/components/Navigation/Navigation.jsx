@@ -1,9 +1,8 @@
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { logout } from "../../redux/actions/user.action";
 
-import Logo from "../assets/argentBankLogo.png";
+import Logo from "../../assets/argentBankLogo.png";
 
 export default function Navigation() {
     const user = useSelector((store) => store.user);
